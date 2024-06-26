@@ -17,6 +17,7 @@ export default defineConfig({
   use: {
     baseURL: 'https://www.rijksmuseum.nl/api/nl/',
     trace: 'retain-on-failure',
+    screenshot: 'only-on-failure'
   },
   projects: [
     {

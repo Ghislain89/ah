@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test",
-    "generate-report": "allure generate allure-results -o allure-report --clean",
-    "move-history": "mv allure-report/history allure-results"
+    "test": "playwright test"
   },
   "keywords": [],
   "author": "",
