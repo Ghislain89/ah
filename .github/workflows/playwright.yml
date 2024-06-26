@@ -39,15 +39,15 @@ jobs:
         retention-days: 20
         
     - name: Get Allure history
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       if: always()
       continue-on-error: true
       with:
         ref: gh-pages
         path: gh-pages
     
-    - name: Test marketplace action
-      uses: simple-elf/allure-report-action@master
+    - name: Generate Report and include History
+      uses: simple-elf/allure-report-action@v1.9
       if: always()
       id: allure-report
       with:
