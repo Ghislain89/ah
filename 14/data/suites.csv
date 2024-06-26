@@ -1,0 +1,3 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Jun 26 14:41:28 GMT 2024","Wed Jun 26 14:41:32 GMT 2024","4233","api","collections.spec.ts","","","","Get details for ArtObject: De Nachtwacht",""
+"passed","Wed Jun 26 14:41:26 GMT 2024","Wed Jun 26 14:41:28 GMT 2024","1801","api","collections.spec.ts","","","","Get Collection made by Rembrandt van Rijn",""
