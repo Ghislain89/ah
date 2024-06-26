@@ -11,12 +11,13 @@ export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  reporter: process.env.CI !== undefined ? [['list'], ['allure-playwright']] : [['list'], ['allure-playwright']],
   use: {
     baseURL: 'https://www.rijksmuseum.nl/api/nl/',
     trace: 'retain-on-failure',
+    screenshot: 'only-on-failure'
   },
   projects: [
     {
