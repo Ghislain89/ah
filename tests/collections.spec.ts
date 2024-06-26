@@ -8,7 +8,7 @@ It might be that you find some unexpected behavior. If you do, please describe i
 
 
 test("Get Collection made by Rembrandt van Rijn",{
-  tag: ['@GET', '@Collections'],
+  tag: ['@GET', '@collections'],
 }, async ({ API }) => {
     const res = await API.getRequest('/collection', { involvedMaker: 'Rembrandt van Rijn', ps: 100 });
 
@@ -22,7 +22,7 @@ test("Get Collection made by Rembrandt van Rijn",{
 
 
 test("Get details for ArtObject: De Nachtwacht",{
-  tag: ['@GET', '@2'],
+  tag: ['@GET', '@collection-details'],
 }, async ({ API }) => {
     const res = await API.getRequest('/collection', { involvedMaker: 'Rembrandt van Rijn', ps: 100 });
 
@@ -31,10 +31,13 @@ test("Get details for ArtObject: De Nachtwacht",{
     
     const artObject = res.data.artObjects.find((obj: any) => obj.title === 'De Nachtwacht');
   
-    const detailRes = await API.getRequest(`/collection/${artObject.id}` , { involvedMaker: 'Rembrandt van Rijn', ps: 100 });
+    const detailRes = await API.getRequest(`/collection/${artObject.objectNumber}` , { involvedMaker: 'Rembrandt van Rijn', ps: 100 });
 
     expect(detailRes.statusCode).toBe(200);
     expect(detailRes.headers['content-type']).toContain('application/json');
-    console.log(detailRes)
+    expect(detailRes.data.artObject.titles).toEqual([
+            "Officieren en andere schutters van wijk II in Amsterdam, onder leiding van kapitein Frans Banninck Cocq en luitenant Willem van Ruytenburch, bekend als ‘De Nachtwacht’",
+            "Het korporaalschap van kapitein Frans Banninck Cocq en luitenant Willem van Ruytenburch, bekend als de 'Nachtwacht'"
+        ],)
     
   });

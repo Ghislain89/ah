@@ -13,13 +13,11 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  reporter: [['list'], ['html', { open: 'never' }]],
   use: {
     baseURL: 'https://www.rijksmuseum.nl/api/nl/',
     trace: 'retain-on-failure',
   },
-
-  /* Configure projects for major browsers */
   projects: [
     {
       name: 'api',
